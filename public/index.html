@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Investicijski kviz — Advantis Broker</title>
+  <meta name="description" content="Otkrijte koja investiciona strategija odgovara vama. Besplatan kviz za personalizovanu preporuku ulaganja.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Screen reader live region for step announcements -->
+  <div class="sr-only" aria-live="polite" id="stepAnnouncer"></div>
+
+  <!-- ===== HEADER ===== -->
+  <header class="header">
+    <img class="logo" src="https://advantisbroker.com/wp-content/uploads/2024/09/Advantis-logo.svg" alt="Advantis Broker">
+    <span class="step-counter" id="stepCounter"></span>
+  </header>
+
+  <!-- ===== PROGRESS BAR ===== -->
+  <div class="progress-bar-track" id="progressBarTrack" role="progressbar" aria-valuemin="0" aria-valuemax="12" aria-valuenow="0" aria-label="Napredak kviza">
+    <div class="progress-bar-fill" id="progressBarFill"></div>
+  </div>
+
+  <!-- ===== QUIZ CONTAINER ===== -->
+  <main class="quiz-container">
+
+    <!-- ==================== STEP 1: Landing + Email ==================== -->
+    <section class="step active" id="step-1" data-step="1">
+      <div class="card landing-card">
+        <h1 class="landing-headline">Otkrijte koja investiciona strategija odgovara vama</h1>
+        <p class="landing-subheadline">Za samo 3 minute odgovorite na nekoliko pitanja i dobijte personalizovanu preporuku ulaganja — potpuno besplatno.</p>
+
+        <div class="expect-list">
+          <div class="expect-item">
+            <div class="expect-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/>
+                <rect x="9" y="3" width="6" height="4" rx="1"/>
+                <path d="M9 14l2 2 4-4"/>
+              </svg>
+            </div>
+            <span>12 kratkih pitanja o vašim ciljevima i finansijskoj situaciji</span>
+          </div>
+          <div class="expect-item">
+            <div class="expect-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="3" y="11" width="18" height="11" rx="2"/>
+                <path d="M7 11V7a5 5 0 0110 0v4"/>
+                <circle cx="12" cy="16" r="1"/>
+              </svg>
+            </div>
+            <span>Vaši podaci su sigurni i neće biti dijeljeni trećim stranama</span>
+          </div>
+          <div class="expect-item">
+            <div class="expect-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"/>
+                <circle cx="12" cy="12" r="3"/>
+                <path d="M12 2v3M12 19v3M2 12h3M19 12h3"/>
+              </svg>
+            </div>
+            <span>Personalizovana strategija na osnovu vašeg profila</span>
+          </div>
+        </div>
+
+        <div class="email-form">
+          <label class="input-label" for="emailInput">Unesite vašu e-mail adresu</label>
+          <input type="email" id="emailInput" class="input-field" placeholder="ime@email.com" autocomplete="email" aria-describedby="emailError">
+          <p class="input-error" id="emailError" role="alert"></p>
+          <button class="btn-primary btn-full" id="emailSubmit">Počnite kviz →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== STEP 2: Goal Selection ==================== -->
+    <section class="step" id="step-2" data-step="2">
+      <div class="card">
+        <span class="question-label">VAŠI CILJEVI</span>
+        <h2 class="question-text">Koji je vaš primarni cilj ulaganja?</h2>
+
+        <div class="options-grid icon-grid" data-question="goal">
+          <button class="option-card icon-option" data-value="Školovanje djece">
+            <div class="option-icon">
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M16 6L3 12l13 6 13-6-13-6z"/>
+                <path d="M7 15v6c0 2 4 4 9 4s9-2 9-4v-6"/>
+                <path d="M27 12v8"/>
+              </svg>
+            </div>
+            <span class="option-label">Školovanje djece</span>
+          </button>
+          <button class="option-card icon-option" data-value="Penzioni fond">
+            <div class="option-icon">
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="16" cy="10" r="6"/>
+                <path d="M6 28c0-5.5 4.5-10 10-10s10 4.5 10 10"/>
+                <path d="M12 18l-2 8M20 18l2 8"/>
+              </svg>
+            </div>
+            <span class="option-label">Penzioni fond</span>
+          </button>
+          <button class="option-card icon-option" data-value="Kupovina nekretnine">
+            <div class="option-icon">
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M5 16l11-10 11 10"/>
+                <path d="M8 14v12h16V14"/>
+                <path d="M13 26v-6h6v6"/>
+              </svg>
+            </div>
+            <span class="option-label">Kupovina nekretnine</span>
+          </button>
+          <button class="option-card icon-option" data-value="Hitni fond">
+            <div class="option-icon">
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M16 4L6 9v9c0 6 4.3 11.5 10 13 5.7-1.5 10-7 10-13V9L16 4z"/>
+                <path d="M12 16l3 3 5-6"/>
+              </svg>
+            </div>
+            <span class="option-label">Hitni fond</span>
+          </button>
+          <button class="option-card icon-option" data-value="Putovanje i slobodne aktivnosti">
+            <div class="option-icon">
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M28 8l-6 18-5-5-7 3 3-7-5-5L28 8z"/>
+                <path d="M17 21l4-4"/>
+              </svg>
+            </div>
+            <span class="option-label">Putovanje i slobodne aktivnosti</span>
+          </button>
+          <button class="option-card icon-option" data-value="Generalna štednja">
+            <div class="option-icon">
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="16" cy="16" r="10"/>
+                <path d="M16 10v12M12 14h8M12 18h8"/>
+              </svg>
+            </div>
+            <span class="option-label">Generalna štednja</span>
+          </button>
+          <button class="option-card icon-option" data-value="Pokretanje biznisa">
+            <div class="option-icon">
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M16 6v20M16 6l-5 8h10L16 6z"/>
+                <path d="M10 26h12"/>
+                <path d="M8 20l3-2M24 20l-3-2"/>
+              </svg>
+            </div>
+            <span class="option-label">Pokretanje biznisa</span>
+          </button>
+        </div>
+
+        <p class="question-tooltip">Izaberite samo jedan odgovor!</p>
+
+        <div class="step-actions">
+          <button class="btn-back" id="back-2">← Nazad</button>
+          <button class="btn-primary" id="next-2" disabled>Nastavi →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== STEP 3: Amount ==================== -->
+    <section class="step" id="step-3" data-step="3">
+      <div class="card">
+        <span class="question-label">POČETNO ULAGANJE</span>
+        <h2 class="question-text">Ukoliko ste spremni imati početno ulaganje, unesite koji je to iznos?</h2>
+
+        <div class="input-group" data-question="amount">
+          <input type="text" id="amountInput" class="input-field" placeholder="npr. 500 KM" autocomplete="off" aria-describedby="amountHelper">
+          <p class="input-helper" id="amountHelper">Unesite okvirni iznos u KM</p>
+        </div>
+
+        <div class="step-actions">
+          <button class="btn-back" id="back-3">← Nazad</button>
+          <button class="btn-primary" id="next-3" disabled>Nastavi →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== STEP 4: Duration ==================== -->
+    <section class="step" id="step-4" data-step="4">
+      <div class="card">
+        <span class="question-label">VREMENSKI HORIZONT</span>
+        <h2 class="question-text">Koliko dugo planiraš ulagati za odabrani cilj?</h2>
+
+        <div class="options-grid pill-grid" data-question="duration">
+          <button class="option-pill" data-value="1 godina">1 godina</button>
+          <button class="option-pill" data-value="2 godine">2 godine</button>
+          <button class="option-pill" data-value="5 godina">5 godina</button>
+          <button class="option-pill" data-value="10 godina">10 godina</button>
+          <button class="option-pill" data-value="20 godina">20 godina</button>
+          <button class="option-pill" data-value="25 godina">25 godina</button>
+        </div>
+
+        <div class="step-actions">
+          <button class="btn-back" id="back-4">← Nazad</button>
+          <button class="btn-primary" id="next-4" disabled>Nastavi →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== STEP 5: Source of Funds ==================== -->
+    <section class="step" id="step-5" data-step="5">
+      <div class="card">
+        <span class="question-label">IZVOR SREDSTAVA</span>
+        <h2 class="question-text">Koji je primarni izvor Vaših sredstava za ulaganje?</h2>
+
+        <div class="options-list" data-question="source_of_funds">
+          <button class="option-btn" data-value="Prihod od nesamostalnog rada">Prihod od nesamostalnog rada</button>
+          <button class="option-btn" data-value="Prihod od samostalne djelatnosti">Prihod od samostalne djelatnosti</button>
+          <button class="option-btn" data-value="Prihod od imovine i imovinskih prava">Prihod od imovine i imovinskih prava</button>
+          <button class="option-btn" data-value="Prihod od kapitala">Prihod od kapitala</button>
+          <button class="option-btn" data-value="Prihod od osiguranja">Prihod od osiguranja</button>
+          <button class="option-btn" data-value="Ostalo (stipendije, nasljedstva, naknade i slično)">Ostalo (stipendije, nasljedstva, naknade i slično)</button>
+        </div>
+
+        <div class="step-actions">
+          <button class="btn-back" id="back-5">← Nazad</button>
+          <button class="btn-primary" id="next-5" disabled>Nastavi →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== STEP 6: Personal Status ==================== -->
+    <section class="step" id="step-6" data-step="6">
+      <div class="card">
+        <span class="question-label">POSLOVNI STATUS</span>
+        <h2 class="question-text">Koji je Vaš trenutni poslovni status?</h2>
+
+        <div class="options-list" data-question="personal_status">
+          <button class="option-btn" data-value="Zaposlen">Zaposlen</button>
+          <button class="option-btn" data-value="Poduzetnik">Poduzetnik</button>
+          <button class="option-btn" data-value="Nezaposlen">Nezaposlen</button>
+          <button class="option-btn" data-value="Penzioner">Penzioner</button>
+          <button class="option-btn" data-value="Učenik / student">Učenik / student</button>
+          <button class="option-btn" data-value="Ostalo">Ostalo</button>
+        </div>
+
+        <div class="step-actions">
+          <button class="btn-back" id="back-6">← Nazad</button>
+          <button class="btn-primary" id="next-6" disabled>Nastavi →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== STEP 7: Halfway Break ==================== -->
+    <section class="step" id="step-7" data-step="7">
+      <div class="card halfway-card">
+        <div class="halfway-checkmark">
+          <svg width="64" height="64" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+            <circle cx="32" cy="32" r="30" stroke="#EE7B2B" stroke-width="2"/>
+            <path d="M20 32l8 8 16-16" stroke="#EE7B2B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="checkmark-path"/>
+          </svg>
+        </div>
+        <h2 class="halfway-headline">Odlično! Na pola ste puta!</h2>
+        <p class="halfway-body">Odgovorili ste na prva pitanja. Još nekoliko koraka i imat ćete potpunu sliku vašeg investicijskog profila.</p>
+        <p class="halfway-subtext">Sljedeća pitanja odnose se na vašu finansijsku situaciju i sklonost prema riziku.</p>
+        <button class="btn-primary" id="next-7">Nastavi dalje →</button>
+      </div>
+    </section>
+
+    <!-- ==================== STEP 8: Monthly Income ==================== -->
+    <section class="step" id="step-8" data-step="8">
+      <div class="card">
+        <span class="question-label">FINANSIJSKA SITUACIJA</span>
+        <h2 class="question-text">Koji su vaši ukupni prihodi na mjesečnom nivou (od rada, nekretnina, investicija i sl.)?</h2>
+
+        <div class="options-list" data-question="monthly_income">
+          <button class="option-btn" data-value="Ispod 700,00 KM">Ispod 700,00 KM</button>
+          <button class="option-btn" data-value="700,00 – 1.500,00 KM">700,00 – 1.500,00 KM</button>
+          <button class="option-btn" data-value="1.500,00 – 2.000,00 KM">1.500,00 – 2.000,00 KM</button>
+          <button class="option-btn" data-value="2.000,00 – 3.000,00 KM">2.000,00 – 3.000,00 KM</button>
+          <button class="option-btn" data-value="Iznad 3.000,00 KM">Iznad 3.000,00 KM</button>
+        </div>
+
+        <div class="step-actions">
+          <button class="btn-back" id="back-8">← Nazad</button>
+          <button class="btn-primary" id="next-8" disabled>Nastavi →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== STEP 9: Credit Obligations ==================== -->
+    <section class="step" id="step-9" data-step="9">
+      <div class="card">
+        <span class="question-label">KREDITNE OBVEZE</span>
+        <h2 class="question-text">Kakve su vaše trenutne kreditne obveze?</h2>
+
+        <div class="options-list" data-question="credit_obligations">
+          <button class="option-btn" data-value="Nemam kreditne obveze">Nemam kreditne obveze</button>
+          <button class="option-btn" data-value="Mjesečna obveza je zanemariva u odnosu na primanja">Mjesečna obveza je zanemariva u odnosu na primanja</button>
+          <button class="option-btn" data-value="Mjesečna obveza iznosi oko trećine primanja">Mjesečna obveza iznosi oko trećine primanja</button>
+          <button class="option-btn" data-value="Mjesečna obveza iznosi oko polovice primanja">Mjesečna obveza iznosi oko polovice primanja</button>
+          <button class="option-btn" data-value="Mjesečna obveza je veća od polovice primanja">Mjesečna obveza je veća od polovice primanja</button>
+        </div>
+
+        <div class="step-actions">
+          <button class="btn-back" id="back-9">← Nazad</button>
+          <button class="btn-primary" id="next-9" disabled>Nastavi →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== STEP 10: Investment Knowledge ==================== -->
+    <section class="step" id="step-10" data-step="10">
+      <div class="card">
+        <span class="question-label">POZNAVANJE INSTRUMENATA</span>
+        <h2 class="question-text">Kako biste ocijenili svoje poznavanje jednostavnih investicijskih instrumenata (investicijski fondovi, obveznice, dionice i sl.)?</h2>
+
+        <div class="options-list" data-question="investment_knowledge">
+          <button class="option-btn" data-value="Izvrsno">Izvrsno</button>
+          <button class="option-btn" data-value="Vrlo dobro">Vrlo dobro</button>
+          <button class="option-btn" data-value="Dobro">Dobro</button>
+          <button class="option-btn" data-value="Površno">Površno</button>
+          <button class="option-btn" data-value="Ne poznajem">Ne poznajem</button>
+        </div>
+
+        <div class="step-actions">
+          <button class="btn-back" id="back-10">← Nazad</button>
+          <button class="btn-primary" id="next-10" disabled>Nastavi →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== STEP 11: Investment Experience ==================== -->
+    <section class="step" id="step-11" data-step="11">
+      <div class="card">
+        <span class="question-label">ISKUSTVO S ULAGANJEM</span>
+        <h2 class="question-text">Koliko se često baviš investiranjem?</h2>
+
+        <div class="options-list" data-question="investment_experience">
+          <button class="option-btn" data-value="Svakodnevno">Svakodnevno</button>
+          <button class="option-btn" data-value="Jednom mjesečno">Jednom mjesečno</button>
+          <button class="option-btn" data-value="Nekoliko puta godišnje">Nekoliko puta godišnje</button>
+          <button class="option-btn" data-value="Jednom godišnje ili rjeđe">Jednom godišnje ili rjeđe</button>
+          <button class="option-btn" data-value="Nemam nikakvo iskustvo">Nemam nikakvo iskustvo</button>
+        </div>
+
+        <div class="step-actions">
+          <button class="btn-back" id="back-11">← Nazad</button>
+          <button class="btn-primary" id="next-11" disabled>Nastavi →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== STEP 12: Risk Questions (Q9 + Q10) ==================== -->
+    <section class="step" id="step-12" data-step="12">
+      <div class="card">
+        <span class="question-label">SKLONOST RIZIKU</span>
+
+        <!-- Question A: Risk Percentage -->
+        <h2 class="question-text">Koliki procenat investicije želiš izdvojiti za investiranje s potencijalno višim prinosom i višim rizikom?</h2>
+        <div class="options-grid pill-grid" data-question="risk_percentage">
+          <button class="option-pill" data-value="0 – 20%">0 – 20%</button>
+          <button class="option-pill" data-value="20 – 40%">20 – 40%</button>
+          <button class="option-pill" data-value="40 – 60%">40 – 60%</button>
+          <button class="option-pill" data-value="60 – 80%">60 – 80%</button>
+          <button class="option-pill" data-value="80 – 100%">80 – 100%</button>
+        </div>
+
+        <hr class="question-divider">
+
+        <!-- Question B: Acceptable Drop -->
+        <h2 class="question-text">Koliki privremeni pad vrijednosti investicije ti ne bi predstavljao veći problem?</h2>
+        <div class="options-grid pill-grid" data-question="acceptable_drop">
+          <button class="option-pill" data-value="Do 5%">Do 5%</button>
+          <button class="option-pill" data-value="Do 10%">Do 10%</button>
+          <button class="option-pill" data-value="Do 20%">Do 20%</button>
+          <button class="option-pill" data-value="Do 30%">Do 30%</button>
+          <button class="option-pill" data-value="Do 40%">Do 40%</button>
+        </div>
+
+        <div class="step-actions">
+          <button class="btn-back" id="back-12">← Nazad</button>
+          <button class="btn-primary" id="next-12" disabled>Nastavi →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== STEP 13: Personal Info Form ==================== -->
+    <section class="step" id="step-13" data-step="13">
+      <div class="card">
+        <h2 class="halfway-headline">Hvala vam na strpljenju!</h2>
+        <p class="halfway-body">Dok pripremamo vašu personalizovanu strategiju, molimo vas da popunite još nekoliko podataka kako bismo mogli da vam se javimo.</p>
+
+        <form class="profile-form" id="profileForm" novalidate>
+          <div class="form-group">
+            <label class="input-label" for="nameInput">Ime i prezime *</label>
+            <input type="text" id="nameInput" class="input-field" placeholder="Vaše ime i prezime" autocomplete="name" required aria-required="true" aria-describedby="nameError">
+            <p class="input-error" id="nameError" role="alert"></p>
+          </div>
+
+          <div class="form-group">
+            <label class="input-label" for="dobInput">Datum rođenja *</label>
+            <input type="date" id="dobInput" class="input-field" required aria-required="true" aria-describedby="dobError">
+            <p class="input-error" id="dobError" role="alert"></p>
+          </div>
+
+          <div class="form-group">
+            <label class="input-label" for="cityInput">Grad *</label>
+            <input type="text" id="cityInput" class="input-field" placeholder="Grad u kojem živite" autocomplete="address-level2" required aria-required="true" aria-describedby="cityError">
+            <p class="input-error" id="cityError" role="alert"></p>
+          </div>
+
+          <div class="form-group">
+            <label class="input-label" for="phoneInput">Broj telefona</label>
+            <input type="tel" id="phoneInput" class="input-field" placeholder="+387..." autocomplete="tel" aria-describedby="phoneHelper">
+            <p class="input-helper" id="phoneHelper">Neobavezno — ostavite ako želite da vas kontaktiramo telefonom</p>
+          </div>
+
+          <div class="step-actions">
+            <button type="button" class="btn-back" id="back-13">← Nazad</button>
+            <button type="submit" class="btn-primary" id="profileSubmit">Pogledaj moju strategiju →</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- ==================== STEP 14: Strategy Result ==================== -->
+    <section class="step" id="step-14" data-step="14">
+      <div class="card result-card">
+        <span class="question-label">VAŠ INVESTICIJSKI PROFIL</span>
+        <h1 class="result-profile-name" id="resultProfileName"></h1>
+        <p class="result-tagline" id="resultTagline"></p>
+
+        <!-- Donut Chart -->
+        <div class="result-chart-area">
+          <canvas id="donutChart" width="200" height="200" role="img" aria-label="Grafikon alokacije portfelja"></canvas>
+        </div>
+
+        <!-- Allocation Legend -->
+        <div class="result-allocation">
+          <div class="allocation-row">
+            <span class="allocation-dot dot-gold"></span>
+            <span class="allocation-label">Dionice</span>
+            <span class="allocation-pct" id="resultStockPct"></span>
+          </div>
+          <div class="allocation-row">
+            <span class="allocation-dot dot-blue"></span>
+            <span class="allocation-label">Obveznice i fondovi</span>
+            <span class="allocation-pct" id="resultBondPct"></span>
+          </div>
+        </div>
+
+        <!-- Profile Description -->
+        <p class="result-description" id="resultDescription"></p>
+
+        <!-- CTA Section -->
+        <div class="result-cta">
+          <h3 class="result-cta-headline">Spremni ste za sljedeći korak?</h3>
+          <p class="result-cta-body">Naši stručnjaci u Advantis Brokeru mogu vam pomoći da realizujete ovu strategiju. Razgovor je potpuno besplatan.</p>
+          <a href="https://advantisbroker.com/kontakt" class="btn-primary btn-full" target="_blank" rel="noopener">Kontaktirajte nas →</a>
+        </div>
+
+        <!-- Footer Disclaimer -->
+        <p class="result-disclaimer">Ova procjena je informativnog karaktera i ne predstavlja investicijski savjet. Za personalizovane preporuke kontaktirajte licenciranog investicijskog savjetnika.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="quiz.js"></script>
+</body>
+</html>
