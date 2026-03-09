@@ -299,7 +299,7 @@
             recordId,
             email: userEmail,
             first_name: nameInput.value.trim(),
-            date_of_birth: dobInput.value,
+            date_of_birth: dobInput.value.split('-').reverse().join('/'),
             city: cityInput.value.trim(),
             phone: phoneInput.value.trim() || null,
             profileName: profile.name,
