@@ -302,3 +302,5 @@ async function sendResultEmail({ toEmail, firstName, profileName, profileDescrip
 app.listen(PORT, () => {
   console.log(`Advantis Quiz server running on http://localhost:${PORT}`);
 });
+
+module.exports = app;
